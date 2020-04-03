@@ -126,7 +126,7 @@ class LtiConsumer(object):  # pylint: disable=bad-option-value, useless-object-i
             text_type('lti_message_type'): text_type('basic-lti-launch-request'),
             text_type('lti_version'): text_type('LTI-1p0'),
             text_type('roles'): self.xblock.role,
-            text_type('lis_person_name_full'): self.xblock.user_username,
+            
 
             # Parameters required for grading:
             text_type('resource_link_id'): self.xblock.resource_link_id,
@@ -169,6 +169,7 @@ class LtiConsumer(object):  # pylint: disable=bad-option-value, useless-object-i
 
         if self.xblock.ask_to_send_username and self.xblock.user_username:
             lti_parameters["lis_person_sourcedid"] = self.xblock.user_username
+            lti_parameters["lis_person_name_full"]: self.xblock.user_username
         if self.xblock.ask_to_send_email and self.xblock.user_email:
             lti_parameters["lis_person_contact_email_primary"] = self.xblock.user_email
         if self.xblock.user_language:
